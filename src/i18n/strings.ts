@@ -212,6 +212,7 @@ export const strings: Record<Locale, Strings> = {
       sizeitup: "Estimate sizes in five rounds",
       termo: "Portuguese Wordle",
       timeguessr: "Guess the year and location of historical photos",
+      zoomout: "Guess the game as a screenshot zooms out",
     },
   },
   "pt-BR": {
@@ -328,6 +329,7 @@ export const strings: Record<Locale, Strings> = {
       sizeitup: "Estime tamanhos em cinco rodadas",
       termo: "Wordle em português",
       timeguessr: "Adivinhe o ano e o local de fotos históricas",
+      zoomout: "Adivinhe o jogo conforme a imagem se afasta",
     },
   },
 }

@@ -10,6 +10,7 @@ import guess from "../../samples/guessthegame.txt?raw"
 import letroso from "../../samples/letroso.txt?raw"
 import termo from "../../samples/termo.txt?raw"
 import timeguessr from "../../samples/timeguessr.txt?raw"
+import zoomout from "../../samples/zoomout.txt?raw"
 
 export const DEMO_DATE = "2026-09-26"
 const sources = [
@@ -23,6 +24,7 @@ const sources = [
   letroso,
   termo,
   timeguessr,
+  zoomout,
   "Krillion #73 🦐\n300\n⬛🫧🤡🐟🦑🏮🌟",
   "Size It Up\nOverall Score 350\n🟥🟥🟥🟥🟥 100\n🟥🟥🟥🟥⬜ 80\n🟥🟥🟥⬜⬜ 70\n🟥🟥🟥⬜⬜ 60\n🟥🟥⬜⬜⬜ 40",
 ]

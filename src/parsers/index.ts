@@ -13,6 +13,7 @@ import { sizeItUpParser } from "./sizeitup"
 import { termoParser } from "./termo"
 import { timeGuessrParser } from "./timeguessr"
 import type { GameParser } from "./types"
+import { zoomOutParser } from "./zoomout"
 
 const parsers: GameParser[] = [
   anthropeumParser,
@@ -27,6 +28,7 @@ const parsers: GameParser[] = [
   sizeItUpParser,
   termoParser,
   timeGuessrParser,
+  zoomOutParser,
 ]
 
 export function parseInput(text: string | undefined): GameResult[] {

@@ -63,6 +63,12 @@ function isGameResult(value: unknown): value is GameResult {
     case "expresso":
     case "letroso":
       return typeof value.attempts === "number"
+    case "zoomout":
+      return (
+        Number.isInteger(value.attempts) &&
+        Number(value.attempts) >= (value.won ? 1 : 0) &&
+        Number(value.attempts) <= 5
+      )
     case "framed":
     case "guessthegame":
       return typeof value.gameNumber === "number"

@@ -78,6 +78,7 @@ export function resultMetrics(result: GameResult): ResultMetric[] {
     case "conexo":
     case "expresso":
     case "letroso":
+    case "zoomout":
       return [{ value: result.attempts > 0 ? result.attempts : "—", label: "attempts" }]
     case "framed":
     case "guessthegame":

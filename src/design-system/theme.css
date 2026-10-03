@@ -79,6 +79,8 @@
   --game-timeguessr-ink: #24645e;
   --game-termo: #c5b5bd;
   --game-termo-ink: #644853;
+  --game-zoomout: #94c6ff;
+  --game-zoomout-ink: #245685;
   /* These colors encode gameplay, independently of game identity. */
   --cell-green: #91e8aa;
   --cell-yellow: #f4e66a;
@@ -123,6 +125,7 @@
   --game-sizeitup-ink: var(--game-sizeitup);
   --game-termo-ink: var(--game-termo);
   --game-timeguessr-ink: var(--game-timeguessr);
+  --game-zoomout-ink: var(--game-zoomout);
   --activity-0: #333333;
   --activity-1: #52405e;
   --activity-2: #6b527e;

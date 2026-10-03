@@ -25,6 +25,7 @@ GAMES = {
     "sizeitup": "https://magnitudle.com/size-it-up",
     "termo": "https://term.ooo",
     "timeguessr": "https://timeguessr.com/",
+    "zoomout": "https://zoomout.videoludid.com/",
 }
 
 
@@ -77,7 +78,7 @@ def main() -> int:
     failures = 0
 
     for game, site_url in GAMES.items():
-        target = OUTPUT_DIR / (f"{game}.png" if game in {"cutle", "sizeitup"} else f"{game}.ico")
+        target = OUTPUT_DIR / (f"{game}.png" if game in {"cutle", "sizeitup", "zoomout"} else f"{game}.ico")
         candidates = (
             ["https://magnitudle.com/icon-magnitude.png"]
             if game == "sizeitup"
@@ -88,7 +89,7 @@ def main() -> int:
                 data, content_type = fetch(candidate)
                 if not data or not is_image(data, content_type):
                     continue
-                if game in {"cutle", "sizeitup"} and not data.startswith(b"\x89PNG\r\n\x1a\n"):
+                if game in {"cutle", "sizeitup", "zoomout"} and not data.startswith(b"\x89PNG\r\n\x1a\n"):
                     continue
                 target.write_bytes(data)
                 print(f"{game}: {candidate} -> {target.relative_to(ROOT)}")

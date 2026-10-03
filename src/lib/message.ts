@@ -44,6 +44,15 @@ export function generateShareMessage(entry: DayEntry, options: ShareMessageOptio
       return r.rawText.replace(/\s*-\s*https?\\?:\/\/\S+$/i, "").trim()
     }
 
+    if (r.gameType === "zoomout") {
+      return r.rawText
+        .replace(
+          /^https?\\?:\/\/zoomout\.videoludid\.com(?:[/?#]\S*)?(?:[ \t]+#ZoomOut)?[ \t]*\r?$/gm,
+          "",
+        )
+        .trim()
+    }
+
     return r.rawText
       .replace(/\[https?:\/\/[^\]]+\]\(https?:\/\/[^)]+\)/g, "")
       .replace(/\s*>\s*https?:\/\/\S+/g, "")

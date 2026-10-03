@@ -13,6 +13,7 @@ export type GameType =
   | "sizeitup"
   | "termo"
   | "timeguessr"
+  | "zoomout"
 
 export const GAME_LABELS: Record<GameType, string> = {
   anthropeum: "Anthropeum",
@@ -27,6 +28,7 @@ export const GAME_LABELS: Record<GameType, string> = {
   sizeitup: "Size It Up",
   termo: "Termo",
   timeguessr: "TimeGuessr",
+  zoomout: "ZoomOut",
 }
 
 export const GAME_INFO: Record<
@@ -105,6 +107,12 @@ export const GAME_INFO: Record<
     favicon: "/favicons/termo.ico",
     emoji: "🟩",
   },
+  zoomout: {
+    label: "ZoomOut",
+    url: "https://zoomout.videoludid.com/",
+    favicon: "/favicons/zoomout.png",
+    emoji: "🔎",
+  },
 }
 
 export const GAME_ORDER: GameType[] = [
@@ -120,6 +128,7 @@ export const GAME_ORDER: GameType[] = [
   "sizeitup",
   "termo",
   "timeguessr",
+  "zoomout",
 ]
 
 export interface BaseResult {
@@ -208,6 +217,11 @@ export interface TimeGuessrResult extends BaseResult {
   rounds: TimeGuessrRound[]
 }
 
+export interface ZoomOutResult extends BaseResult {
+  gameType: "zoomout"
+  attempts: number
+}
+
 export interface TermoMode {
   mode: string
   gameNumber: number
@@ -234,6 +248,7 @@ export type GameResult =
   | SizeItUpResult
   | TermoResult
   | TimeGuessrResult
+  | ZoomOutResult
 
 export interface DayEntry {
   date: string
@@ -267,6 +282,7 @@ export function createManualLoss(gameType: GameType, date: string): GameResult {
       return { ...base, gameType, attempts: 0, hints: 0 }
     case "expresso":
     case "letroso":
+    case "zoomout":
       return { ...base, gameType, attempts: 0 }
     case "framed":
     case "guessthegame":
