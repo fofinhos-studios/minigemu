@@ -42,6 +42,16 @@ function isGameResult(value: unknown): value is GameResult {
         /^(?:🟩|🟨|🟥|🟦){10}$/u.test(value.grid[0])
       )
     }
+    case "crosstune":
+      return (
+        Number.isSafeInteger(value.gameNumber) &&
+        Number(value.gameNumber) >= (value.won ? 1 : 0) &&
+        Number.isSafeInteger(value.timeSeconds) &&
+        Number(value.timeSeconds) >= 0 &&
+        typeof value.flawless === "boolean" &&
+        (value.won === true ||
+          (value.gameNumber === 0 && value.timeSeconds === 0 && !value.flawless))
+      )
     case "cutle": {
       if (
         !Number.isSafeInteger(value.gameNumber) ||
@@ -58,6 +68,13 @@ function isGameResult(value: unknown): value is GameResult {
       }
       return left + right === 100 && value.won === Math.min(left, right) >= 48
     }
+    case "chartle":
+      return (
+        typeof value.chartTitle === "string" &&
+        Number.isInteger(value.attempts) &&
+        Number(value.attempts) >= (value.won ? 1 : 0) &&
+        Number(value.attempts) <= 5
+      )
     case "conexo":
       return typeof value.attempts === "number" && typeof value.hints === "number"
     case "expresso":
@@ -72,6 +89,16 @@ function isGameResult(value: unknown): value is GameResult {
     case "framed":
     case "guessthegame":
       return typeof value.gameNumber === "number"
+    case "spotle":
+      return (
+        typeof value.gameNumber === "number" &&
+        Number.isSafeInteger(value.gameNumber) &&
+        value.gameNumber >= 0 &&
+        typeof value.attempts === "number" &&
+        Number.isInteger(value.attempts) &&
+        value.attempts >= 0 &&
+        value.attempts <= 10
+      )
     case "krillion": {
       if (
         typeof value.gameNumber !== "number" ||

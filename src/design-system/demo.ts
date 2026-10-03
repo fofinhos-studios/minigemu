@@ -1,13 +1,16 @@
 import { parseInput } from "@/parsers"
 import type { GameResult } from "@/types/games"
 import anthropeum from "../../samples/anthropeum.txt?raw"
+import chartle from "../../samples/chartle.txt?raw"
 import conexo from "../../samples/conexo.txt?raw"
+import crosstune from "../../samples/crosstune.txt?raw"
 import cutle from "../../samples/cutle.txt?raw"
 import expresso from "../../samples/expresso.txt?raw"
 import framed from "../../samples/framed.txt?raw"
 import gamedle from "../../samples/gamedle.txt?raw"
 import guess from "../../samples/guessthegame.txt?raw"
 import letroso from "../../samples/letroso.txt?raw"
+import spotle from "../../samples/spotle.txt?raw"
 import termo from "../../samples/termo.txt?raw"
 import timeguessr from "../../samples/timeguessr.txt?raw"
 import zoomout from "../../samples/zoomout.txt?raw"
@@ -15,13 +18,16 @@ import zoomout from "../../samples/zoomout.txt?raw"
 export const DEMO_DATE = "2026-09-26"
 const sources = [
   anthropeum,
+  chartle,
   conexo,
+  crosstune,
   cutle,
   expresso,
   framed,
   gamedle,
   guess,
   letroso,
+  spotle,
   termo,
   timeguessr,
   zoomout,

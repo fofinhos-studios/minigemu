@@ -23,6 +23,15 @@ export function generateShareMessage(entry: DayEntry, options: ShareMessageOptio
 
     if (options.gameNamesOnly) {
       if (!r.won && r.rawText === `${GAME_LABELS[r.gameType]} ❌`) return r.rawText
+      if (r.gameType === "crosstune") {
+        return [
+          GAME_LABELS[r.gameType],
+          r.rawText
+            .split(/\r?\n/)
+            .find((line) => line.trim().startsWith("I solved the puzzle"))
+            ?.trim(),
+        ].join("\n")
+      }
       if (r.gameType === "anthropeum") {
         return [GAME_LABELS[r.gameType], ...r.grid, r.rawText.split(/\r?\n/).at(-1)!.trim()].join(
           "\n",
@@ -54,6 +63,7 @@ export function generateShareMessage(entry: DayEntry, options: ShareMessageOptio
     }
 
     return r.rawText
+      .replace(/^Play at https?:\/\/chartle\.cc(?:[/?#]\S*)?[ \t]*\r?$/gm, "")
       .replace(/\[https?:\/\/[^\]]+\]\(https?:\/\/[^)]+\)/g, "")
       .replace(/\s*>\s*https?:\/\/\S+/g, "")
       .replace(/https?:\/\/\S+/g, "")

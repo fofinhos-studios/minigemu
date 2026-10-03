@@ -1,7 +1,9 @@
 import { todayKey } from "@/lib/dates"
 import type { GameResult } from "@/types/games"
 import { anthropeumParser } from "./anthropeum"
+import { chartleParser } from "./chartle"
 import { conexoParser } from "./conexo"
+import { crosstuneParser } from "./crosstune"
 import { cutleParser } from "./cutle"
 import { expressoParser } from "./expresso"
 import { framedParser } from "./framed"
@@ -10,6 +12,7 @@ import { guessTheGameParser } from "./guessthegame"
 import { krillionParser } from "./krillion"
 import { letrosoParser } from "./letroso"
 import { sizeItUpParser } from "./sizeitup"
+import { spotleParser } from "./spotle"
 import { termoParser } from "./termo"
 import { timeGuessrParser } from "./timeguessr"
 import type { GameParser } from "./types"
@@ -17,7 +20,9 @@ import { zoomOutParser } from "./zoomout"
 
 const parsers: GameParser[] = [
   anthropeumParser,
+  chartleParser,
   conexoParser,
+  crosstuneParser,
   cutleParser,
   expressoParser,
   framedParser,
@@ -26,6 +31,7 @@ const parsers: GameParser[] = [
   krillionParser,
   letrosoParser,
   sizeItUpParser,
+  spotleParser,
   termoParser,
   timeGuessrParser,
   zoomOutParser,

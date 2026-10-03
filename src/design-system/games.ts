@@ -16,7 +16,9 @@ const identity = (game: GameType, code: string): GameVisual => ({
 })
 export const GAME_VISUALS: Record<GameType, GameVisual> = {
   anthropeum: identity("anthropeum", "ANT"),
+  chartle: identity("chartle", "CHT"),
   conexo: identity("conexo", "CNX"),
+  crosstune: identity("crosstune", "CRS"),
   cutle: identity("cutle", "CUT"),
   expresso: identity("expresso", "EXP"),
   framed: identity("framed", "FRM"),
@@ -25,6 +27,7 @@ export const GAME_VISUALS: Record<GameType, GameVisual> = {
   krillion: identity("krillion", "KRL"),
   letroso: identity("letroso", "LTR"),
   sizeitup: identity("sizeitup", "SIZ"),
+  spotle: identity("spotle", "SPT"),
   termo: identity("termo", "TRM"),
   timeguessr: identity("timeguessr", "TGS"),
   zoomout: identity("zoomout", "ZOM"),

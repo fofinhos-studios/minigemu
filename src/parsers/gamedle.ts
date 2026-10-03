@@ -18,6 +18,7 @@ const GAME_HEADER_PATTERNS = [
   /^Joguei conexo\.ws/i,
   /^Framed\s+#/i,
   /^#GuessTheGame/i,
+  /^Spotle\.io\s+#/i,
   /^Joguei letroso\.com/i,
   /^(?:joguei\s+)?term\.ooo/i,
 ]

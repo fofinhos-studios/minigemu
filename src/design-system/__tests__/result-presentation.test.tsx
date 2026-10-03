@@ -13,13 +13,16 @@ const fixture = (name: string) =>
   readFileSync(new URL(`../../../samples/${name}.txt`, import.meta.url), "utf8")
 const samples = [
   "anthropeum",
+  "chartle",
   "conexo",
+  "crosstune",
   "cutle",
   "expresso",
   "framed",
   "gamedle",
   "guessthegame",
   "letroso",
+  "spotle",
   "termo",
   "timeguessr",
   "zoomout",
@@ -134,10 +137,19 @@ describe("graphical results preserve gameplay information", () => {
       }
       expect(
         resultMetrics(result).every((metric) =>
-          ["topPlayers", "attempts", "ratio", "points"].includes(metric.label),
+          ["topPlayers", "attempts", "ratio", "points", "time"].includes(metric.label),
         ),
       ).toBe(true)
     }
+  })
+  test("renders Crosstune time and flawless finish without an invented grid", () => {
+    const result = samples.find((item) => item.gameType === "crosstune")!
+    const html = render(result)
+    expect(html).toContain("5:36")
+    expect(html).toContain("Tempo")
+    expect(html).toContain("Sem erros")
+    expect(html).toContain("#523")
+    expect(html).not.toContain('class="result-cell"')
   })
   test("omits unknown editions without dropping the other modes", () => {
     const result = samples.find((item) => item.gameType === "gamedle")!

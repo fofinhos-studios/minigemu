@@ -55,10 +55,14 @@
   --ticket-hover-shadow: 0 10px 24px -12px rgb(0 0 0 / 24%);
   --hover-control: 1.03;
   --press-scale: 0.97;
+  --game-chartle: #91e8aa;
+  --game-chartle-ink: #28653b;
   --game-anthropeum: #e8c18e;
   --game-anthropeum-ink: #76501e;
   --game-conexo: #c4a1ff;
   --game-conexo-ink: #623195;
+  --game-crosstune: #94c6ff;
+  --game-crosstune-ink: #245685;
   --game-cutle: #8edbd4;
   --game-cutle-ink: #24645e;
   --game-expresso: #f4e66a;
@@ -75,6 +79,8 @@
   --game-letroso-ink: #28653b;
   --game-sizeitup: #ffa08c;
   --game-sizeitup-ink: #963329;
+  --game-spotle: #94c6ff;
+  --game-spotle-ink: #245887;
   --game-timeguessr: #8edbd4;
   --game-timeguessr-ink: #24645e;
   --game-termo: #c5b5bd;
@@ -113,8 +119,10 @@
   --color-destructive: #ff9292;
   --color-destructive-foreground: #111111;
   --color-success: #91e8aa;
+  --game-chartle-ink: var(--game-chartle);
   --game-anthropeum-ink: var(--game-anthropeum);
   --game-conexo-ink: var(--game-conexo);
+  --game-crosstune-ink: var(--game-crosstune);
   --game-cutle-ink: var(--game-cutle);
   --game-expresso-ink: var(--game-expresso);
   --game-framed-ink: var(--game-framed);
@@ -123,6 +131,7 @@
   --game-krillion-ink: var(--game-krillion);
   --game-letroso-ink: var(--game-letroso);
   --game-sizeitup-ink: var(--game-sizeitup);
+  --game-spotle-ink: var(--game-spotle);
   --game-termo-ink: var(--game-termo);
   --game-timeguessr-ink: var(--game-timeguessr);
   --game-zoomout-ink: var(--game-zoomout);

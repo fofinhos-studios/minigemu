@@ -15,7 +15,9 @@ OUTPUT_DIR = ROOT / "public" / "favicons"
 USER_AGENT = "daily-game-tracker-favicon-fetcher/1.0"
 GAMES = {
     "anthropeum": "https://anthropeum.com/",
+    "chartle": "https://chartle.cc/",
     "conexo": "https://conexo.ws",
+    "crosstune": "https://crosstune.io/",
     "cutle": "https://pfiffel.com/cutle/",
     "expresso": "https://expresso.ac",
     "framed": "https://framed.wtf",
@@ -23,6 +25,7 @@ GAMES = {
     "guessthegame": "https://guessthe.game",
     "letroso": "https://letroso.com",
     "sizeitup": "https://magnitudle.com/size-it-up",
+    "spotle": "https://spotle.io/",
     "termo": "https://term.ooo",
     "timeguessr": "https://timeguessr.com/",
     "zoomout": "https://zoomout.videoludid.com/",
@@ -78,10 +81,12 @@ def main() -> int:
     failures = 0
 
     for game, site_url in GAMES.items():
-        target = OUTPUT_DIR / (f"{game}.png" if game in {"cutle", "sizeitup", "zoomout"} else f"{game}.ico")
+        target = OUTPUT_DIR / (f"{game}.png" if game in {"cutle", "sizeitup", "zoomout", "spotle"} else f"{game}.ico")
         candidates = (
             ["https://magnitudle.com/icon-magnitude.png"]
             if game == "sizeitup"
+            else ["https://spotle.io/favicon.png"]
+            if game == "spotle"
             else icon_candidates(site_url)
         )
         for candidate in candidates:
@@ -89,7 +94,7 @@ def main() -> int:
                 data, content_type = fetch(candidate)
                 if not data or not is_image(data, content_type):
                     continue
-                if game in {"cutle", "sizeitup", "zoomout"} and not data.startswith(b"\x89PNG\r\n\x1a\n"):
+                if game in {"cutle", "sizeitup", "zoomout", "spotle"} and not data.startswith(b"\x89PNG\r\n\x1a\n"):
                     continue
                 target.write_bytes(data)
                 print(f"{game}: {candidate} -> {target.relative_to(ROOT)}")

@@ -2,8 +2,10 @@ import type { KrillionTier } from "@/lib/krillion"
 
 export type GameType =
   | "anthropeum"
+  | "chartle"
   | "conexo"
   | "cutle"
+  | "crosstune"
   | "expresso"
   | "framed"
   | "gamedle"
@@ -11,14 +13,17 @@ export type GameType =
   | "krillion"
   | "letroso"
   | "sizeitup"
+  | "spotle"
   | "termo"
   | "timeguessr"
   | "zoomout"
 
 export const GAME_LABELS: Record<GameType, string> = {
   anthropeum: "Anthropeum",
+  chartle: "Chartle",
   conexo: "Conexo",
   cutle: "Cutle",
+  crosstune: "Crosstune",
   expresso: "Expresso",
   framed: "Framed",
   gamedle: "Gamedle",
@@ -26,6 +31,7 @@ export const GAME_LABELS: Record<GameType, string> = {
   krillion: "Krillion",
   letroso: "Letroso",
   sizeitup: "Size It Up",
+  spotle: "Spotle",
   termo: "Termo",
   timeguessr: "TimeGuessr",
   zoomout: "ZoomOut",
@@ -41,11 +47,23 @@ export const GAME_INFO: Record<
     favicon: "/favicons/anthropeum.ico",
     emoji: "🏺",
   },
+  chartle: {
+    label: "Chartle",
+    url: "https://chartle.cc/",
+    favicon: "/favicons/chartle.ico",
+    emoji: "📈",
+  },
   conexo: {
     label: "Conexo",
     url: "https://conexo.ws",
     favicon: "/favicons/conexo.ico",
     emoji: "🔗",
+  },
+  crosstune: {
+    label: "Crosstune",
+    url: "https://crosstune.io/",
+    favicon: "/favicons/crosstune.ico",
+    emoji: "🎵",
   },
   cutle: {
     label: "Cutle",
@@ -95,6 +113,12 @@ export const GAME_INFO: Record<
     favicon: "/favicons/sizeitup.png",
     emoji: "📏",
   },
+  spotle: {
+    label: "Spotle",
+    url: "https://spotle.io/",
+    favicon: "/favicons/spotle.png",
+    emoji: "🎵",
+  },
   timeguessr: {
     label: "TimeGuessr",
     url: "https://timeguessr.com/",
@@ -117,7 +141,9 @@ export const GAME_INFO: Record<
 
 export const GAME_ORDER: GameType[] = [
   "anthropeum",
+  "chartle",
   "conexo",
+  "crosstune",
   "cutle",
   "expresso",
   "framed",
@@ -126,6 +152,7 @@ export const GAME_ORDER: GameType[] = [
   "krillion",
   "letroso",
   "sizeitup",
+  "spotle",
   "termo",
   "timeguessr",
   "zoomout",
@@ -137,6 +164,12 @@ export interface BaseResult {
   won: boolean
   grid: string[]
   rawText: string
+}
+
+export interface ChartleResult extends BaseResult {
+  gameType: "chartle"
+  chartTitle: string
+  attempts: number
 }
 
 export interface AnthropeumResult extends BaseResult {
@@ -160,6 +193,13 @@ export interface CutleResult extends BaseResult {
 export interface FramedResult extends BaseResult {
   gameType: "framed"
   gameNumber: number
+}
+
+export interface CrosstuneResult extends BaseResult {
+  gameType: "crosstune"
+  gameNumber: number
+  timeSeconds: number
+  flawless: boolean
 }
 
 export interface ExpressoResult extends BaseResult {
@@ -203,6 +243,12 @@ export interface SizeItUpResult extends BaseResult {
   roundScores: number[]
 }
 
+export interface SpotleResult extends BaseResult {
+  gameType: "spotle"
+  gameNumber: number
+  attempts: number
+}
+
 export interface TimeGuessrRound {
   score: number
   yearError: number
@@ -237,8 +283,10 @@ export interface TermoResult extends BaseResult {
 
 export type GameResult =
   | AnthropeumResult
+  | ChartleResult
   | ConexoResult
   | CutleResult
+  | CrosstuneResult
   | ExpressoResult
   | FramedResult
   | GamedleResult
@@ -246,6 +294,7 @@ export type GameResult =
   | KrillionResult
   | LetrosoResult
   | SizeItUpResult
+  | SpotleResult
   | TermoResult
   | TimeGuessrResult
   | ZoomOutResult
@@ -276,8 +325,12 @@ export function createManualLoss(gameType: GameType, date: string): GameResult {
   switch (gameType) {
     case "anthropeum":
       return { ...base, gameType, score: 0 }
+    case "crosstune":
+      return { ...base, gameType, gameNumber: 0, timeSeconds: 0, flawless: false }
     case "cutle":
       return { ...base, gameType, gameNumber: 0, ratio: [0, 0] }
+    case "chartle":
+      return { ...base, gameType, chartTitle: "", attempts: 0 }
     case "conexo":
       return { ...base, gameType, attempts: 0, hints: 0 }
     case "expresso":
@@ -289,6 +342,8 @@ export function createManualLoss(gameType: GameType, date: string): GameResult {
       return { ...base, gameType, gameNumber: 0 }
     case "krillion":
       return { ...base, gameType, gameNumber: 0, score: 0, tiers: [] }
+    case "spotle":
+      return { ...base, gameType, gameNumber: 0, attempts: 0 }
     case "timeguessr":
       return { ...base, gameType, gameNumber: 0, score: 0, rounds: [] }
     case "sizeitup":

@@ -45,7 +45,7 @@ export function isManualLoss(result: GameResult): boolean {
 // Metadata is a view of stored results. Never infer wins or invent missing numbers.
 export interface ResultMetric {
   value: number | string
-  label: "attempts" | "points" | "topPlayers" | "manual" | "ratio"
+  label: "attempts" | "points" | "topPlayers" | "manual" | "ratio" | "time"
   mode?: string
 }
 
@@ -73,12 +73,21 @@ export function resultMetrics(result: GameResult): ResultMetric[] {
           ? []
           : [{ value: `${result.topPercent}%`, label: "topPlayers" as const }]),
       ]
+    case "crosstune":
+      return [
+        {
+          value: `${Math.floor(result.timeSeconds / 60)}:${String(result.timeSeconds % 60).padStart(2, "0")}`,
+          label: "time",
+        },
+      ]
     case "cutle":
       return [{ value: result.ratio.join(":"), label: "ratio" }]
+    case "chartle":
     case "conexo":
     case "expresso":
     case "letroso":
     case "zoomout":
+    case "spotle":
       return [{ value: result.attempts > 0 ? result.attempts : "—", label: "attempts" }]
     case "framed":
     case "guessthegame":

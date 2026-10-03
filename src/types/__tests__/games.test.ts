@@ -4,7 +4,7 @@ import { createManualLoss, GAME_INFO, GAME_ORDER, getSubGameEntries } from "../g
 test("every game has a local favicon path", () => {
   for (const game of GAME_ORDER) {
     expect(GAME_INFO[game].favicon).toBe(
-      `/favicons/${game}.${["zoomout", "cutle", "krillion", "sizeitup"].includes(game) ? "png" : "ico"}`,
+      `/favicons/${game}.${["zoomout", "cutle", "krillion", "sizeitup", "spotle"].includes(game) ? "png" : "ico"}`,
     )
   }
 })

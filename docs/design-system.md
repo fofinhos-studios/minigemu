@@ -56,4 +56,4 @@ Run `bun run dev` and open `/?design-system`. The catalog is lazy-loaded only in
 
 Inspect both themes at 360, 768, 1024 and 1440 px in PT and EN. Exercise focus, hover, active, disabled, empty, error, filtering, manual loss, reorder, copy, history and backup confirmation states. Check actual surface contrast, not token values alone. Then run `bun run lint`, `bun run typecheck`, `bun test`, and `bun run build`.
 
-Presentation tests cover all nine games, unchanged sharing/data, manual losses, zero scores, unknown graphemes, multiple modes and side-by-side boards. Existing parser and backup tests remain in place.
+Presentation tests cover all supported games, unchanged sharing/data, manual losses, zero scores, unknown graphemes, multiple modes and side-by-side boards. Existing parser and backup tests remain in place.

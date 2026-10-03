@@ -69,6 +69,17 @@ export function ResultGrid({ result }: { result: GameResult }) {
   const { locale } = useI18n()
   const copy = industrialCopy[locale]
   if (isManualLoss(result)) return null
+  if (result.gameType === "crosstune") {
+    return result.flawless ? <p className="mt-3 font-mono text-xs">{copy.flawless}</p> : null
+  }
+  if (result.gameType === "chartle") {
+    return (
+      <div className="mt-4">
+        <p className="mb-2 text-sm">{result.chartTitle}</p>
+        <GridRows rows={result.grid} label={copy.grid} />
+      </div>
+    )
+  }
   if (result.gameType === "gamedle" || result.gameType === "termo") {
     return (
       <div className="ticket-modes">
