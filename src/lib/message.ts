@@ -28,6 +28,12 @@ export function generateShareMessage(entry: DayEntry, options: ShareMessageOptio
           "\n",
         )
       }
+      if (r.gameType === "timeguessr") {
+        return [
+          `${GAME_LABELS[r.gameType]} — ${r.score.toLocaleString("en-US")}/50,000`,
+          ...r.grid,
+        ].join("\n")
+      }
       if (r.gameType === "sizeitup") {
         return [GAME_LABELS[r.gameType], `Overall Score ${r.overallScore}`, ...r.grid].join("\n")
       }

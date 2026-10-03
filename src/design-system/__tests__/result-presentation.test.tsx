@@ -21,6 +21,7 @@ const samples = [
   "guessthegame",
   "letroso",
   "termo",
+  "timeguessr",
 ].flatMap((name) => parseInput(fixture(name)).slice(0, 1))
 samples.push(...parseInput("Krillion #4 🦐\n300\n⬛🫧🤡🐟🦑🏮🌟"))
 samples.push(

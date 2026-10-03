@@ -11,6 +11,7 @@ import { krillionParser } from "./krillion"
 import { letrosoParser } from "./letroso"
 import { sizeItUpParser } from "./sizeitup"
 import { termoParser } from "./termo"
+import { timeGuessrParser } from "./timeguessr"
 import type { GameParser } from "./types"
 
 const parsers: GameParser[] = [
@@ -25,6 +26,7 @@ const parsers: GameParser[] = [
   letrosoParser,
   sizeItUpParser,
   termoParser,
+  timeGuessrParser,
 ]
 
 export function parseInput(text: string | undefined): GameResult[] {

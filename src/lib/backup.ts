@@ -86,6 +86,41 @@ function isGameResult(value: unknown): value is GameResult {
         value.date === krillionDate(value.gameNumber)
       )
     }
+    case "timeguessr": {
+      if (
+        !Number.isSafeInteger(value.gameNumber) ||
+        Number(value.gameNumber) < 0 ||
+        !Number.isInteger(value.score) ||
+        Number(value.score) < 0 ||
+        Number(value.score) > 50_000 ||
+        !Array.isArray(value.rounds) ||
+        !value.rounds.every(
+          (round) =>
+            isRecord(round) &&
+            Number.isInteger(round.score) &&
+            Number(round.score) >= 0 &&
+            Number(round.score) <= 10_000 &&
+            Number.isSafeInteger(round.yearError) &&
+            Number(round.yearError) >= 0 &&
+            typeof round.distance === "number" &&
+            Number.isFinite(round.distance) &&
+            round.distance >= 0 &&
+            ["ft", "mi", "m", "km"].includes(String(round.distanceUnit)),
+        )
+      ) {
+        return false
+      }
+      if (!value.won) {
+        return value.gameNumber === 0 && value.score === 0 && value.rounds.length === 0
+      }
+      return (
+        Number(value.gameNumber) > 0 &&
+        value.rounds.length === 5 &&
+        Array.isArray(value.grid) &&
+        value.grid.length === 5 &&
+        value.rounds.reduce((sum, round) => sum + round.score, 0) === value.score
+      )
+    }
     case "sizeitup": {
       if (
         typeof value.overallScore !== "number" ||

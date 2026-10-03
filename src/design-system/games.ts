@@ -26,6 +26,7 @@ export const GAME_VISUALS: Record<GameType, GameVisual> = {
   letroso: identity("letroso", "LTR"),
   sizeitup: identity("sizeitup", "SIZ"),
   termo: identity("termo", "TRM"),
+  timeguessr: identity("timeguessr", "TGS"),
 }
 
 export function gameStyle(game: GameType): CSSProperties {

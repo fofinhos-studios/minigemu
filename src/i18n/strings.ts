@@ -211,6 +211,7 @@ export const strings: Record<Locale, Strings> = {
       letroso: "Brazilian word puzzle",
       sizeitup: "Estimate sizes in five rounds",
       termo: "Portuguese Wordle",
+      timeguessr: "Guess the year and location of historical photos",
     },
   },
   "pt-BR": {
@@ -326,6 +327,7 @@ export const strings: Record<Locale, Strings> = {
       letroso: "Jogo brasileiro de palavras",
       sizeitup: "Estime tamanhos em cinco rodadas",
       termo: "Wordle em português",
+      timeguessr: "Adivinhe o ano e o local de fotos históricas",
     },
   },
 }

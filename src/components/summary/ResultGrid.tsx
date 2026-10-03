@@ -1,14 +1,17 @@
 import {
+  CalendarIcon,
   CameraIcon,
   CheckIcon,
   CircleIcon,
   FishIcon,
   GameControllerIcon,
+  GlobeIcon,
   JoystickIcon,
   LightbulbIcon,
   MaskHappyIcon,
   SparkleIcon,
   StarIcon,
+  TrophyIcon,
   WavesIcon,
   XIcon,
 } from "@phosphor-icons/react"
@@ -106,6 +109,36 @@ export function ResultGrid({ result }: { result: GameResult }) {
             </li>
           )
         })}
+      </ol>
+    )
+  }
+  if (result.gameType === "timeguessr") {
+    return (
+      <ol className="mt-3">
+        {result.rounds.map((round, index) => (
+          <li key={index} className="result-round flex-wrap">
+            <span className="font-mono text-muted-foreground">
+              {copy.round} {index + 1}
+            </span>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 font-mono">
+              <span className="flex items-center gap-1">
+                <TrophyIcon size={16} aria-hidden="true" />
+                <span className="sr-only">{copy.points}: </span>
+                {round.score.toLocaleString(locale)}
+              </span>
+              <span className="flex items-center gap-1">
+                <CalendarIcon size={16} aria-hidden="true" />
+                <span className="sr-only">{copy.yearError}: </span>
+                {round.yearError} {copy.years}
+              </span>
+              <span className="flex items-center gap-1">
+                <GlobeIcon size={16} aria-hidden="true" />
+                <span className="sr-only">{copy.distance}: </span>
+                {round.distance.toLocaleString(locale)} {round.distanceUnit}
+              </span>
+            </div>
+          </li>
+        ))}
       </ol>
     )
   }

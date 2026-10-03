@@ -24,6 +24,7 @@ GAMES = {
     "letroso": "https://letroso.com",
     "sizeitup": "https://magnitudle.com/size-it-up",
     "termo": "https://term.ooo",
+    "timeguessr": "https://timeguessr.com/",
 }
 
 

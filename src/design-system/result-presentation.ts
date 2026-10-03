@@ -82,6 +82,8 @@ export function resultMetrics(result: GameResult): ResultMetric[] {
     case "framed":
     case "guessthegame":
       return [{ value: gridAttempts(result.grid), label: "attempts" }]
+    case "timeguessr":
+      return [{ value: `${result.score.toLocaleString("en-US")} / 50,000`, label: "points" }]
     case "krillion":
       return [{ value: result.score, label: "points" }]
     case "sizeitup":

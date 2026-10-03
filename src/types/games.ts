@@ -12,6 +12,7 @@ export type GameType =
   | "letroso"
   | "sizeitup"
   | "termo"
+  | "timeguessr"
 
 export const GAME_LABELS: Record<GameType, string> = {
   anthropeum: "Anthropeum",
@@ -25,6 +26,7 @@ export const GAME_LABELS: Record<GameType, string> = {
   letroso: "Letroso",
   sizeitup: "Size It Up",
   termo: "Termo",
+  timeguessr: "TimeGuessr",
 }
 
 export const GAME_INFO: Record<
@@ -91,6 +93,12 @@ export const GAME_INFO: Record<
     favicon: "/favicons/sizeitup.png",
     emoji: "📏",
   },
+  timeguessr: {
+    label: "TimeGuessr",
+    url: "https://timeguessr.com/",
+    favicon: "/favicons/timeguessr.ico",
+    emoji: "🌍",
+  },
   termo: {
     label: "Termo",
     url: "https://term.ooo",
@@ -111,6 +119,7 @@ export const GAME_ORDER: GameType[] = [
   "letroso",
   "sizeitup",
   "termo",
+  "timeguessr",
 ]
 
 export interface BaseResult {
@@ -185,6 +194,20 @@ export interface SizeItUpResult extends BaseResult {
   roundScores: number[]
 }
 
+export interface TimeGuessrRound {
+  score: number
+  yearError: number
+  distance: number
+  distanceUnit: "ft" | "mi" | "m" | "km"
+}
+
+export interface TimeGuessrResult extends BaseResult {
+  gameType: "timeguessr"
+  gameNumber: number
+  score: number
+  rounds: TimeGuessrRound[]
+}
+
 export interface TermoMode {
   mode: string
   gameNumber: number
@@ -210,6 +233,7 @@ export type GameResult =
   | LetrosoResult
   | SizeItUpResult
   | TermoResult
+  | TimeGuessrResult
 
 export interface DayEntry {
   date: string
@@ -249,6 +273,8 @@ export function createManualLoss(gameType: GameType, date: string): GameResult {
       return { ...base, gameType, gameNumber: 0 }
     case "krillion":
       return { ...base, gameType, gameNumber: 0, score: 0, tiers: [] }
+    case "timeguessr":
+      return { ...base, gameType, gameNumber: 0, score: 0, rounds: [] }
     case "sizeitup":
       return { ...base, gameType, overallScore: 0, roundScores: [] }
     case "gamedle":
