@@ -12,6 +12,7 @@ import { resultEditions, resultMetrics, tokenizeGrid } from "../result-presentat
 const fixture = (name: string) =>
   readFileSync(new URL(`../../../samples/${name}.txt`, import.meta.url), "utf8")
 const samples = [
+  "anthropeum",
   "conexo",
   "cutle",
   "expresso",
@@ -131,7 +132,7 @@ describe("graphical results preserve gameplay information", () => {
       }
       expect(
         resultMetrics(result).every((metric) =>
-          ["attempts", "ratio", "points"].includes(metric.label),
+          ["topPlayers", "attempts", "ratio", "points"].includes(metric.label),
         ),
       ).toBe(true)
     }

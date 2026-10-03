@@ -200,6 +200,7 @@ export const strings: Record<Locale, Strings> = {
         "Shows daily win percentage. Red means fewer wins; green means higher accuracy. Select a day to review it.",
     },
     gameDescriptions: {
+      anthropeum: "Guess where and when ten artifacts were made",
       conexo: "Group words by connection",
       cutle: "Cut a shape into equal halves; 48:52 or better wins",
       expresso: "Find the popular expression",
@@ -314,6 +315,7 @@ export const strings: Record<Locale, Strings> = {
         "Mostra a porcentagem diária de vitórias. Vermelho indica menos vitórias; verde, maior precisão. Selecione um dia para revisá-lo.",
     },
     gameDescriptions: {
+      anthropeum: "Adivinhe onde e quando dez artefatos foram feitos",
       conexo: "Agrupe palavras pela conexão",
       cutle: "Corte uma forma ao meio; 48:52 ou melhor é vitória",
       expresso: "Encontre a expressão popular",

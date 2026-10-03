@@ -23,6 +23,11 @@ export function generateShareMessage(entry: DayEntry, options: ShareMessageOptio
 
     if (options.gameNamesOnly) {
       if (!r.won && r.rawText === `${GAME_LABELS[r.gameType]} ❌`) return r.rawText
+      if (r.gameType === "anthropeum") {
+        return [GAME_LABELS[r.gameType], ...r.grid, r.rawText.split(/\r?\n/).at(-1)!.trim()].join(
+          "\n",
+        )
+      }
       if (r.gameType === "sizeitup") {
         return [GAME_LABELS[r.gameType], `Overall Score ${r.overallScore}`, ...r.grid].join("\n")
       }

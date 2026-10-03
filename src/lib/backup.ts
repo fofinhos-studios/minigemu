@@ -21,6 +21,27 @@ function isGameResult(value: unknown): value is GameResult {
   if (!validBase) return false
 
   switch (value.gameType) {
+    case "anthropeum": {
+      if (
+        typeof value.score !== "number" ||
+        !Number.isInteger(value.score) ||
+        value.score < 0 ||
+        value.score > 100_000 ||
+        (value.topPercent !== undefined &&
+          (typeof value.topPercent !== "number" ||
+            !Number.isInteger(value.topPercent) ||
+            value.topPercent < 1 ||
+            value.topPercent > 100))
+      ) {
+        return false
+      }
+      if (!value.won) return value.score === 0 && value.topPercent === undefined
+      return (
+        Array.isArray(value.grid) &&
+        value.grid.length === 1 &&
+        /^(?:🟩|🟨|🟥|🟦){10}$/u.test(value.grid[0])
+      )
+    }
     case "cutle": {
       if (
         !Number.isSafeInteger(value.gameNumber) ||

@@ -15,6 +15,7 @@ const identity = (game: GameType, code: string): GameVisual => ({
   ink: `var(--game-${game}-ink)`,
 })
 export const GAME_VISUALS: Record<GameType, GameVisual> = {
+  anthropeum: identity("anthropeum", "ANT"),
   conexo: identity("conexo", "CNX"),
   cutle: identity("cutle", "CUT"),
   expresso: identity("expresso", "EXP"),

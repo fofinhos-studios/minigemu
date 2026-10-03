@@ -1,6 +1,7 @@
 import type { KrillionTier } from "@/lib/krillion"
 
 export type GameType =
+  | "anthropeum"
   | "conexo"
   | "cutle"
   | "expresso"
@@ -13,6 +14,7 @@ export type GameType =
   | "termo"
 
 export const GAME_LABELS: Record<GameType, string> = {
+  anthropeum: "Anthropeum",
   conexo: "Conexo",
   cutle: "Cutle",
   expresso: "Expresso",
@@ -29,6 +31,12 @@ export const GAME_INFO: Record<
   GameType,
   { label: string; url: string; favicon: string; emoji: string }
 > = {
+  anthropeum: {
+    label: "Anthropeum",
+    url: "https://anthropeum.com/",
+    favicon: "/favicons/anthropeum.ico",
+    emoji: "🏺",
+  },
   conexo: {
     label: "Conexo",
     url: "https://conexo.ws",
@@ -92,6 +100,7 @@ export const GAME_INFO: Record<
 }
 
 export const GAME_ORDER: GameType[] = [
+  "anthropeum",
   "conexo",
   "cutle",
   "expresso",
@@ -110,6 +119,12 @@ export interface BaseResult {
   won: boolean
   grid: string[]
   rawText: string
+}
+
+export interface AnthropeumResult extends BaseResult {
+  gameType: "anthropeum"
+  score: number
+  topPercent?: number
 }
 
 export interface ConexoResult extends BaseResult {
@@ -184,6 +199,7 @@ export interface TermoResult extends BaseResult {
 }
 
 export type GameResult =
+  | AnthropeumResult
   | ConexoResult
   | CutleResult
   | ExpressoResult
@@ -219,6 +235,8 @@ export function createManualLoss(gameType: GameType, date: string): GameResult {
   }
 
   switch (gameType) {
+    case "anthropeum":
+      return { ...base, gameType, score: 0 }
     case "cutle":
       return { ...base, gameType, gameNumber: 0, ratio: [0, 0] }
     case "conexo":

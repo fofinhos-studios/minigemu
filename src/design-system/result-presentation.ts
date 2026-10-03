@@ -45,7 +45,7 @@ export function isManualLoss(result: GameResult): boolean {
 // Metadata is a view of stored results. Never infer wins or invent missing numbers.
 export interface ResultMetric {
   value: number | string
-  label: "attempts" | "points" | "manual" | "ratio"
+  label: "attempts" | "points" | "topPlayers" | "manual" | "ratio"
   mode?: string
 }
 
@@ -66,6 +66,13 @@ function termoAttempts(mode: TermoMode): number | string {
 export function resultMetrics(result: GameResult): ResultMetric[] {
   if (isManualLoss(result)) return [{ value: "—", label: "manual" }]
   switch (result.gameType) {
+    case "anthropeum":
+      return [
+        { value: result.score, label: "points" },
+        ...(result.topPercent === undefined
+          ? []
+          : [{ value: `${result.topPercent}%`, label: "topPlayers" as const }]),
+      ]
     case "cutle":
       return [{ value: result.ratio.join(":"), label: "ratio" }]
     case "conexo":

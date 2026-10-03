@@ -55,6 +55,8 @@
   --ticket-hover-shadow: 0 10px 24px -12px rgb(0 0 0 / 24%);
   --hover-control: 1.03;
   --press-scale: 0.97;
+  --game-anthropeum: #e8c18e;
+  --game-anthropeum-ink: #76501e;
   --game-conexo: #c4a1ff;
   --game-conexo-ink: #623195;
   --game-cutle: #8edbd4;
@@ -107,6 +109,7 @@
   --color-destructive: #ff9292;
   --color-destructive-foreground: #111111;
   --color-success: #91e8aa;
+  --game-anthropeum-ink: var(--game-anthropeum);
   --game-conexo-ink: var(--game-conexo);
   --game-cutle-ink: var(--game-cutle);
   --game-expresso-ink: var(--game-expresso);

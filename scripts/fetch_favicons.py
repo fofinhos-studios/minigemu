@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "public" / "favicons"
 USER_AGENT = "daily-game-tracker-favicon-fetcher/1.0"
 GAMES = {
+    "anthropeum": "https://anthropeum.com/",
     "conexo": "https://conexo.ws",
     "cutle": "https://pfiffel.com/cutle/",
     "expresso": "https://expresso.ac",

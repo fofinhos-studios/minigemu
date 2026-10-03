@@ -3,7 +3,7 @@
   <a href="https://minigemu.fofinhos.studio/">minigēmu</a>
 </h1>
 
-Paste share text to save results from Cutle, Conexo, Expresso, Framed, Gamedle, GuessTheGame, Krillion, Letroso, Size It Up and Termo.
+Paste share text to save results from Anthropeum, Cutle, Conexo, Expresso, Framed, Gamedle, GuessTheGame, Krillion, Letroso, Size It Up and Termo.
 
 Browse results by day or game, check activity, accuracy and win rates, copy a daily summary, and back up your data. Results stay in your browser.
 
