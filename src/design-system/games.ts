@@ -16,6 +16,7 @@ const identity = (game: GameType, code: string): GameVisual => ({
 })
 export const GAME_VISUALS: Record<GameType, GameVisual> = {
   conexo: identity("conexo", "CNX"),
+  cutle: identity("cutle", "CUT"),
   expresso: identity("expresso", "EXP"),
   framed: identity("framed", "FRM"),
   gamedle: identity("gamedle", "GMD"),

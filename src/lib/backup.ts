@@ -21,6 +21,22 @@ function isGameResult(value: unknown): value is GameResult {
   if (!validBase) return false
 
   switch (value.gameType) {
+    case "cutle": {
+      if (
+        !Number.isSafeInteger(value.gameNumber) ||
+        Number(value.gameNumber) < 0 ||
+        !Array.isArray(value.ratio) ||
+        value.ratio.length !== 2 ||
+        !value.ratio.every((part) => Number.isInteger(part) && part >= 0 && part <= 100)
+      ) {
+        return false
+      }
+      const [left, right] = value.ratio as [number, number]
+      if (value.gameNumber === 0) {
+        return !value.won && left === 0 && right === 0 && value.rawText === "Cutle ❌"
+      }
+      return left + right === 100 && value.won === Math.min(left, right) >= 48
+    }
     case "conexo":
       return typeof value.attempts === "number" && typeof value.hints === "number"
     case "expresso":

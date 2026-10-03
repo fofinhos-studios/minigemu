@@ -201,6 +201,7 @@ export const strings: Record<Locale, Strings> = {
     },
     gameDescriptions: {
       conexo: "Group words by connection",
+      cutle: "Cut a shape into equal halves; 48:52 or better wins",
       expresso: "Find the popular expression",
       framed: "Guess the movie from frames",
       gamedle: "Guess the game from clues",
@@ -314,6 +315,7 @@ export const strings: Record<Locale, Strings> = {
     },
     gameDescriptions: {
       conexo: "Agrupe palavras pela conexão",
+      cutle: "Corte uma forma ao meio; 48:52 ou melhor é vitória",
       expresso: "Encontre a expressão popular",
       framed: "Adivinhe o filme pelos quadros",
       gamedle: "Adivinhe o jogo pelas pistas",

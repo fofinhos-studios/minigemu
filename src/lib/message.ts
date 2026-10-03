@@ -29,6 +29,10 @@ export function generateShareMessage(entry: DayEntry, options: ShareMessageOptio
       return [GAME_LABELS[r.gameType], ...r.grid].join("\n")
     }
 
+    if (r.gameType === "cutle") {
+      return r.rawText.replace(/\s*-\s*https?\\?:\/\/\S+$/i, "").trim()
+    }
+
     return r.rawText
       .replace(/\[https?:\/\/[^\]]+\]\(https?:\/\/[^)]+\)/g, "")
       .replace(/\s*>\s*https?:\/\/\S+/g, "")

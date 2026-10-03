@@ -2,6 +2,7 @@ import type { KrillionTier } from "@/lib/krillion"
 
 export type GameType =
   | "conexo"
+  | "cutle"
   | "expresso"
   | "framed"
   | "gamedle"
@@ -13,6 +14,7 @@ export type GameType =
 
 export const GAME_LABELS: Record<GameType, string> = {
   conexo: "Conexo",
+  cutle: "Cutle",
   expresso: "Expresso",
   framed: "Framed",
   gamedle: "Gamedle",
@@ -32,6 +34,12 @@ export const GAME_INFO: Record<
     url: "https://conexo.ws",
     favicon: "/favicons/conexo.ico",
     emoji: "🔗",
+  },
+  cutle: {
+    label: "Cutle",
+    url: "https://pfiffel.com/cutle/",
+    favicon: "/favicons/cutle.png",
+    emoji: "✂️",
   },
   expresso: {
     label: "Expresso",
@@ -85,6 +93,7 @@ export const GAME_INFO: Record<
 
 export const GAME_ORDER: GameType[] = [
   "conexo",
+  "cutle",
   "expresso",
   "framed",
   "gamedle",
@@ -107,6 +116,12 @@ export interface ConexoResult extends BaseResult {
   gameType: "conexo"
   attempts: number
   hints: number
+}
+
+export interface CutleResult extends BaseResult {
+  gameType: "cutle"
+  gameNumber: number
+  ratio: [number, number]
 }
 
 export interface FramedResult extends BaseResult {
@@ -170,6 +185,7 @@ export interface TermoResult extends BaseResult {
 
 export type GameResult =
   | ConexoResult
+  | CutleResult
   | ExpressoResult
   | FramedResult
   | GamedleResult
@@ -203,6 +219,8 @@ export function createManualLoss(gameType: GameType, date: string): GameResult {
   }
 
   switch (gameType) {
+    case "cutle":
+      return { ...base, gameType, gameNumber: 0, ratio: [0, 0] }
     case "conexo":
       return { ...base, gameType, attempts: 0, hints: 0 }
     case "expresso":

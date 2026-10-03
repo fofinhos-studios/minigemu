@@ -57,6 +57,8 @@
   --press-scale: 0.97;
   --game-conexo: #c4a1ff;
   --game-conexo-ink: #623195;
+  --game-cutle: #8edbd4;
+  --game-cutle-ink: #24645e;
   --game-expresso: #f4e66a;
   --game-expresso-ink: #6d5700;
   --game-framed: #ff9292;
@@ -106,6 +108,7 @@
   --color-destructive-foreground: #111111;
   --color-success: #91e8aa;
   --game-conexo-ink: var(--game-conexo);
+  --game-cutle-ink: var(--game-cutle);
   --game-expresso-ink: var(--game-expresso);
   --game-framed-ink: var(--game-framed);
   --game-gamedle-ink: var(--game-gamedle);

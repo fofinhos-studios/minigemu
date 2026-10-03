@@ -15,6 +15,7 @@ OUTPUT_DIR = ROOT / "public" / "favicons"
 USER_AGENT = "daily-game-tracker-favicon-fetcher/1.0"
 GAMES = {
     "conexo": "https://conexo.ws",
+    "cutle": "https://pfiffel.com/cutle/",
     "expresso": "https://expresso.ac",
     "framed": "https://framed.wtf",
     "gamedle": "https://gamedle.wtf",
@@ -74,7 +75,7 @@ def main() -> int:
     failures = 0
 
     for game, site_url in GAMES.items():
-        target = OUTPUT_DIR / ("sizeitup.png" if game == "sizeitup" else f"{game}.ico")
+        target = OUTPUT_DIR / (f"{game}.png" if game in {"cutle", "sizeitup"} else f"{game}.ico")
         candidates = (
             ["https://magnitudle.com/icon-magnitude.png"]
             if game == "sizeitup"
@@ -85,7 +86,7 @@ def main() -> int:
                 data, content_type = fetch(candidate)
                 if not data or not is_image(data, content_type):
                     continue
-                if game == "sizeitup" and not data.startswith(b"\x89PNG\r\n\x1a\n"):
+                if game in {"cutle", "sizeitup"} and not data.startswith(b"\x89PNG\r\n\x1a\n"):
                     continue
                 target.write_bytes(data)
                 print(f"{game}: {candidate} -> {target.relative_to(ROOT)}")

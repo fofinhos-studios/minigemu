@@ -13,6 +13,7 @@ const fixture = (name: string) =>
   readFileSync(new URL(`../../../samples/${name}.txt`, import.meta.url), "utf8")
 const samples = [
   "conexo",
+  "cutle",
   "expresso",
   "framed",
   "gamedle",
@@ -42,8 +43,8 @@ describe("graphical results preserve gameplay information", () => {
     expect(tokens.find((token) => token.text === "🟢")?.shape).toBe("circle")
     expect(tokens.at(-1)?.symbol).toBe("check")
   })
-  test("renders all nine games without modifying stored results or shared text", () => {
-    expect(new Set(samples.map((result) => result.gameType)).size).toBe(9)
+  test("renders all supported games without modifying stored results or shared text", () => {
+    expect(new Set(samples.map((result) => result.gameType)).size).toBe(GAME_ORDER.length)
     for (const result of samples) {
       const before = JSON.stringify(result)
       const entry = { date: result.date, results: [result] }
@@ -129,7 +130,9 @@ describe("graphical results preserve gameplay information", () => {
         expect(body).not.toContain(edition.value)
       }
       expect(
-        resultMetrics(result).every((metric) => ["attempts", "points"].includes(metric.label)),
+        resultMetrics(result).every((metric) =>
+          ["attempts", "ratio", "points"].includes(metric.label),
+        ),
       ).toBe(true)
     }
   })

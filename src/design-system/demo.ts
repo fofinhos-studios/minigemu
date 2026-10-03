@@ -1,6 +1,7 @@
 import { parseInput } from "@/parsers"
 import type { GameResult } from "@/types/games"
 import conexo from "../../samples/conexo.txt?raw"
+import cutle from "../../samples/cutle.txt?raw"
 import expresso from "../../samples/expresso.txt?raw"
 import framed from "../../samples/framed.txt?raw"
 import gamedle from "../../samples/gamedle.txt?raw"
@@ -11,6 +12,7 @@ import termo from "../../samples/termo.txt?raw"
 export const DEMO_DATE = "2026-09-26"
 const sources = [
   conexo,
+  cutle,
   expresso,
   framed,
   gamedle,
